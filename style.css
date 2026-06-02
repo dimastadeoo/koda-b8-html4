@@ -8,9 +8,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
     background-color: #FBCFE8; 
-    padding: 40px 16px;
-    justify-content: center;
-    align-items: flex-start;
+    place-items: center;
 }
 
 
@@ -19,6 +17,7 @@ body{
     max-width: 640px; 
     display: grid;
     gap: 8px; 
+    margin: 16px;
 }
 
 .form-card {
