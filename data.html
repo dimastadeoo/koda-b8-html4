@@ -38,22 +38,23 @@
 
             savedData.forEach((data, index) => {
                 const row = document.createElement('tr')
-                const col1 = document.createElement('td')
-                col1.innerText = index + 1
-                const col2 = document.createElement('td')
-                col2.innerText = data.name
-                const col3 = document.createElement('td')
-                col3.innerText = data.age
-                const col4 = document.createElement('td')
-                col4.innerText = data.gender
-                const col5 = document.createElement('td')
-                col5.innerText = data.smoke
-                const col6 = document.createElement('td')
-                col6.innerText = data.merkSmoke
 
-                row.append(col1, col2, col3, col4, col5, col6)
-                tableBody.append(row)
-                
+                const columnsData = [
+                    index + 1,
+                    data.name,
+                    data.age,
+                    data.gender || '-',
+                    data.smoke || '-',
+                    data.merkSmoke || '-'
+                ];
+
+                columnsData.forEach(text => {
+                    const cell = document.createElement('td');
+                    cell.innerText = text;
+                    row.append(cell);
+                });
+
+                tableBody.append(row);
             });
         }
 
