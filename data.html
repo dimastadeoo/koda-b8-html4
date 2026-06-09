@@ -60,7 +60,7 @@
         clearBtn.addEventListener('click', function () {
             if (confirm('Apakah Anda yakin ingin menghapus semua data survey?')) {
                 window.localStorage.removeItem('surveyResponses')
-                displayData()
+                window.location.href = 'data.html'
             }
         });
 
