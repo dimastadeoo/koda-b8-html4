@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,116 +8,165 @@
     <title>Learning Use Form Input</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <form class="form-container" action="index.html">
-        <div class="form-card header-card">
-            <div class="top-bar"></div>
-            <div class="card-content">
-                <h1>Form Survey Perokok</h1>
-                <p class="description">Form ini untuk menentukan banyaknya perokok</p>
-            </div>
-        </div>
-        <div class="form-card">
-            <div class="card-content">
-                <label class="question-label" for="name">Siapa nama anda?</label>
-                <input id="name" name="name" class="text-input" type="text" placeholder="Your Answer">
-            </div>
-        </div>
-        <div class="form-card">
-            <div class="card-content">
-            <label class="question-label" for="age">Berapa umur anda?</label>
-            <input class="text-input" id="age" name="age" type="text" placeholder="Your Answer">
-            </div>
-        </div>
-        <div class="form-card">
-            <div class="card-content">
-                <label class="question-label">Apa jenis kelamin anda?</label>
-            
-                <div class="options-container">
-                    <label for="female" class="option-item">
-                        <input  type="radio" id="female" name="gender" value="Laki-laki"/>
-                        <span class="radio-custom"></span>
-                        <label class="option-text" for="female">Perempuan</label>
-                    </label>
-
-                    <label for="man" class="option-item">
-                        <input  type="radio" id="man" name="gender" value="Laki-laki"/>
-                        <span class="radio-custom"></span>
-                        <label class="option-text" for="man">Laki-laki</label>
-                    </label>
+    <main class="container-main">
+        <form class="form-container" action="data.html">
+            <div class="form-card header-card">
+                <div class="top-bar"></div>
+                <div class="card-content">
+                    <h1>Form Survey Perokok</h1>
+                    <p class="description">Form ini untuk menentukan banyaknya perokok</p>
                 </div>
             </div>
-        </div>
-        <div class="form-card">
-            <div class="card-content">
-                <label class="question-label">Apakah anda Perokok?</label>
-            
-                <div class="options-container">
-                    <label for="yes" class="option-item">
-                        <input  type="radio" id="yes" name="smoke" value="Laki-laki"/>
-                        <span class="radio-custom"></span>
-                        <label class="option-text" for="yes">Ya</label>
-                    </label>
-
-                    <label for="no" class="option-item">
-                        <input  type="radio" id="no" name="smoke" value="Laki-laki"/>
-                        <span class="radio-custom"></span>
-                        <label class="option-text" for="no">Tidak</label>
-                    </label>
+            <div class="form-card">
+                <div class="card-content">
+                    <label class="question-label" for="name">Siapa nama anda?</label>
+                    <input id="name" name="name" class="text-input" type="text" placeholder="Your Answer" required />
                 </div>
             </div>
-        </div>
-
-        <div class="form-card">
-            <div class="card-content">
-                <label class="question-label">Jika anda perokok, rokok apa yang anda pernah coba?</label>
-            
-                <div class="options-container">
-                    <label for="gudangGaram" class="option-item">
-                        <input type="checkbox" id="gudangGaram" name="merkSmoke" value="Gudang Garam Filter" />
-                        <span class="checkbox-custom"></span>
-                        <label class="option-text" for="gudangGaram">Gudang Garam Filter</label>
-                    </label>
-
-                    <label for="luckyStrike" class="option-item">
-                        <input type="checkbox" id="luckyStrike" name="merkSmoke" value="Lucky Strike" />
-                        <span class="checkbox-custom"></span>
-                        <label class="option-text" for="luckyStrike">Lucky Strike</label>
-                    </label>
-
-                    <label for="marlboro" class="option-item">
-                        <input type="checkbox" id="marlboro" name="merkSmoke" value="Marlboro" />
-                        <span class="checkbox-custom"></span>
-                        <label class="option-text" for="marlboro">Marlboro</label>
-                    </label>
-
-                    <label for="esse" class="option-item">
-                        <input type="checkbox" id="esse" name="merkSmoke" value="Esse" />
-                        <span class="checkbox-custom"></span>
-                        <label class="option-text" for="esse">Esse</label>
-                    </label>
+            <div class="form-card">
+                <div class="card-content">
+                    <label class="question-label" for="age">Berapa umur anda?</label>
+                    <input class="text-input" id="age" name="age" type="number" placeholder="Your Answer" required>
                 </div>
             </div>
-        </div>
+            <div class="form-card">
+                <div class="card-content">
+                    <label class="question-label">Apa jenis kelamin anda?</label>
+                    <div class="options-container">
+                        <label for="female" class="option-item">
+                            <input type="radio" id="female" name="gender" value="Perempuan"/>
+                            <span class="radio-custom"></span>
+                            <label class="option-text" for="female">Perempuan</label>
+                        </label>
+                        <label for="man" class="option-item">
+                            <input type="radio" id="man" name="gender" value="Laki-laki" />
+                            <span class="radio-custom"></span>
+                            <label class="option-text" for="man">Laki-laki</label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-card">
+                <div class="card-content">
+                    <label class="question-label">Apakah anda Perokok?</label>
+                    <div class="options-container">
+                        <label for="yes" class="option-item">
+                            <input type="radio" id="yes" name="smoke" value="Ya"/>
+                            <span class="radio-custom"></span>
+                            <label class="option-text" for="yes">Ya</label>
+                        </label>
+                        <label for="no" class="option-item">
+                            <input type="radio" id="no" name="smoke" value="Tidak" />
+                            <span class="radio-custom"></span>
+                            <label class="option-text" for="no">Tidak</label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-card">
+                <div class="card-content">
+                    <label class="question-label">Jika anda perokok, rokok apa yang anda pernah coba?</label>
+                    <div class="options-container">
+                        <label for="gudangGaram" class="option-item">
+                            <input type="checkbox" id="gudangGaram" name="merkSmoke" value="Gudang Garam Filter" />
+                            <span class="checkbox-custom"></span>
+                            <label class="option-text" for="gudangGaram">Gudang Garam Filter</label>
+                        </label>
+                        <label for="luckyStrike" class="option-item">
+                            <input type="checkbox" id="luckyStrike" name="merkSmoke" value="Lucky Strike" />
+                            <span class="checkbox-custom"></span>
+                            <label class="option-text" for="luckyStrike">Lucky Strike</label>
+                        </label>
+                        <label for="marlboro" class="option-item">
+                            <input type="checkbox" id="marlboro" name="merkSmoke" value="Marlboro" />
+                            <span class="checkbox-custom"></span>
+                            <label class="option-text" for="marlboro">Marlboro</label>
+                        </label>
+                        <label for="esse" class="option-item">
+                            <input type="checkbox" id="esse" name="merkSmoke" value="Esse" />
+                            <span class="checkbox-custom"></span>
+                            <label class="option-text" for="esse">Esse</label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="button-submit-container">
+                    <button type="submit" class="btn-submit">Submit</button>
+                    <a href="data.html" class="btn-submit">Lihat Data</a>
+                </div>
+                <button type="reset" class="btn-reset">Reset</button>
+            </div>
+        </form>
+        <footer class="form-footer">
+            <p class="footer-text">This content is neither created nor endorsed by Google.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Report Abuse</a>
+                <span class="footer-divider">-</span>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <span class="footer-divider">-</span>
+                <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+            <div class="google-branding">
+                <span class="branding-text">Google</span>
+                <span class="branding-subtext">Forms</span>
+            </div>
+        </footer>
+    </main>
 
-        <div class="form-actions">
-            <button type="submit" class="btn-submit">Submit</button>
-            <button type="reset" class="btn-reset">Reset</button>
-        </div>
-    </form>
-    <footer class="form-footer">
-        <p class="footer-text">This content is neither created nor endorsed by Google.</p>
-        <div class="footer-links">
-            <a href="#" class="footer-link">Report Abuse</a>
-            <span class="footer-divider">-</span>
-            <a href="#" class="footer-link">Terms of Service</a>
-            <span class="footer-divider">-</span>
-            <a href="#" class="footer-link">Privacy Policy</a>
-        </div>
-        <div class="google-branding">
-            <span class="branding-text">Google</span>
-            <span class="branding-subtext">Forms</span>
-        </div>
-    </footer>
+    <script>
+        const form = document.querySelector('.form-container')
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+
+            const name = document.getElementById('name').value
+            const age = document.getElementById('age').value
+
+            const genderRadio = document.querySelector('input[name="gender"]:checked')
+            const gender = genderRadio ? genderRadio.value : ''
+
+            const smokeRadio = document.querySelector('input[name="smoke"]:checked');
+            const smoke = smokeRadio ? smokeRadio.value : ''
+
+            const checkedBrands = []
+            document.querySelectorAll('input[name="merkSmoke"]:checked').forEach(function (checkbox) {
+                checkedBrands.push(checkbox.value)
+            })
+
+            if (gender === "" || smoke === "" ) {
+                alert('Mohon isi jenis Kelamin, dan status apakah perokok atau tidak')
+                return
+            }
+
+            if (smoke === "Ya" && checkedBrands.length === 0){
+                alert('Mohon isi merk rokok, jika anda perokok')
+                return
+            }
+
+            if (smoke === "Tidak" && checkedBrands.length !== 0){
+                alert('Jika anda bukan perokok, tidak perlu isi merk rokok')
+                return
+            }
+
+            const responseData = {
+                name: name,
+                age: age,
+                gender: gender,
+                smoke: smoke,
+                merkSmoke: checkedBrands.join(', ')
+            }
+
+            let existingData = JSON.parse(window.localStorage.getItem('surveyResponses')) || []
+
+            existingData.push(responseData)
+
+            window.localStorage.setItem('surveyResponses', JSON.stringify(existingData))
+
+            window.location.href = 'data.html'
+        })
+    </script>
 </body>
+
 </html>

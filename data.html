@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Data Survey </title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Tabel Survey Perokok</h1>
     <table border="1">
@@ -18,88 +21,51 @@
                 <th>Merk Rokok</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Dimas</td>
-                <td>26</td>
-                <td>Laki-laki</td>
-                <td>Tidak</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Fajar</td>
-                <td>24</td>
-                <td>Laki-laki</td>
-                <td>Ya</td>
-                <td>Esse</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Rafli</td>
-                <td>25</td>
-                <td>Laki-laki</td>
-                <td>Tidak</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Eko</td>
-                <td>27</td>
-                <td>Laki-laki</td>
-                <td>Ya</td>
-                <td>Lucky Strike, Esse</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Putri</td>
-                <td>23</td>
-                <td>Perempuan</td>
-                <td>Tidak</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Putra</td>
-                <td>29</td>
-                <td>Laki-laki</td>
-                <td>Ya</td>
-                <td>Gudang Garam Filter, Lucky Strike, Marlboro, Esse, </td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Wishnu</td>
-                <td>26</td>
-                <td>Laki-laki</td>
-                <td>Tidak</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Dewi</td>
-                <td>22</td>
-                <td>Perempuan</td>
-                <td>Ya</td>
-                <td>Marlboro, Gudang Garam Filter</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Wahyu</td>
-                <td>30</td>
-                <td>Laki-laki</td>
-                <td>Tidak</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Ryan</td>
-                <td>22</td>
-                <td>Laki-laki</td>
-                <td>Tidak</td>
-                <td></td>
-            </tr>
+        <tbody class="tbody">
+
         </tbody>
     </table>
+    <a href="index.html" class="btn-back">Kembali ke Form</a>
+    <button id="clear-btn" class="btn-clear">Hapus Semua Data</button>
+
+    <script>
+        const tableBody = document.querySelector('.tbody')
+        const clearBtn = document.getElementById('clear-btn')
+
+        function displayData() {
+
+            const savedData = JSON.parse(window.localStorage.getItem('surveyResponses')) || []
+
+            savedData.forEach((data, index) => {
+                const row = document.createElement('tr')
+                const col1 = document.createElement('td')
+                col1.innerText = index + 1
+                const col2 = document.createElement('td')
+                col2.innerText = data.name
+                const col3 = document.createElement('td')
+                col3.innerText = data.age
+                const col4 = document.createElement('td')
+                col4.innerText = data.gender
+                const col5 = document.createElement('td')
+                col5.innerText = data.smoke
+                const col6 = document.createElement('td')
+                col6.innerText = data.merkSmoke
+
+                row.append(col1, col2, col3, col4, col5, col6)
+                tableBody.append(row)
+                
+            });
+        }
+
+        clearBtn.addEventListener('click', function () {
+            if (confirm('Apakah Anda yakin ingin menghapus semua data survey?')) {
+                window.localStorage.removeItem('surveyResponses')
+                displayData()
+            }
+        });
+
+        displayData()
+    </script>
 </body>
+
 </html>

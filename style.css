@@ -1,22 +1,25 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
+    padding: 24px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #FBCFE8;
+}
+
+.container-main{
     display: grid;
-    background-color: #FBCFE8; 
     place-items: center;
 }
 
-
 .form-container {
     width: 100%;
-    max-width: 640px; 
+    max-width: 640px;
     display: grid;
-    gap: 8px; 
+    gap: 8px;
     margin: 16px;
 }
 
@@ -35,7 +38,7 @@ body{
 
 .header-card .top-bar {
     height: 10px;
-    background-color: #EC4899; 
+    background-color: #EC4899;
     width: 100%;
 }
 
@@ -74,14 +77,14 @@ body{
 }
 
 .text-input:focus {
-    border-bottom: 2px solid #EC4899; 
+    border-bottom: 2px solid #EC4899;
 }
 
 
 .options-container {
     display: flex;
     flex-direction: column;
-    gap: 16px; 
+    gap: 16px;
 }
 
 
@@ -103,7 +106,7 @@ body{
     opacity: 0;
 }
 
-.option-text{
+.option-text {
     font-size: 15px;
     color: #202124;
     vertical-align: middle;
@@ -119,7 +122,7 @@ body{
 }
 
 
-.option-item input[type="checkbox"]:checked ~ .checkbox-custom {
+.option-item input[type="checkbox"]:checked~.checkbox-custom {
     border-color: #EC4899;
     background-color: #EC4899;
 }
@@ -135,10 +138,10 @@ body{
     height: 20px;
     width: 20px;
     border: 2px solid #70757a;
-    border-radius: 50%; 
+    border-radius: 50%;
     position: relative;
     transition: all 0.15s ease;
-    pointer-events: none; 
+    pointer-events: none;
     z-index: 1;
 }
 
@@ -149,7 +152,7 @@ body{
 }
 
 
-.option-item input[type="radio"]:checked ~ .radio-custom {
+.option-item input[type="radio"]:checked~.radio-custom {
     border-color: #EC4899;
 }
 
@@ -164,24 +167,24 @@ body{
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #EC4899; 
+    background-color: #EC4899;
 }
 
-.option-item input[type="radio"]:checked ~ .radio-custom::after {
+.option-item input[type="radio"]:checked~.radio-custom::after {
     display: block;
 }
 
 
 .form-actions {
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     align-items: center;
-    gap: 16px; 
-    margin: 8px 4px; 
+    gap: 16px;
+    margin: 8px 4px;
 }
 
 .btn-submit {
-    background-color: #EC4899; 
+    background-color: #EC4899;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -200,7 +203,7 @@ body{
 .btn-reset {
     background: none;
     border: none;
-    color: #EC4899; 
+    color: #EC4899;
     padding: 10px 16px;
     font-size: 14px;
     margin-left: auto;
@@ -217,8 +220,8 @@ body{
 
 .form-footer {
     width: 100%;
-    max-width: 640px; 
-    margin-top: 24px; 
+    max-width: 640px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -228,7 +231,7 @@ body{
 
 .footer-text {
     font-size: 12px;
-    color: #5f6368; 
+    color: #5f6368;
     text-align: center;
     line-height: 1.5;
 }
@@ -241,14 +244,23 @@ body{
     font-size: 12px;
 }
 
+.button-submit-container {
+    display: flex;
+    gap: 12px;
+}
+
+a {
+    text-decoration: none;
+}
+
 .footer-link {
     color: #5f6368;
-    text-decoration: underline; 
+    text-decoration: underline;
     cursor: pointer;
 }
 
 .footer-link:hover {
-    color: #202124; 
+    color: #202124;
 }
 
 .footer-divider {
@@ -257,20 +269,74 @@ body{
 
 .google-branding {
     margin-top: 16px;
-    font-family: 'Product Sans', 'Arial', sans-serif; 
+    font-family: 'Product Sans', 'Arial', sans-serif;
     font-size: 18px;
     color: #5f6368;
     display: flex;
     align-items: center;
     gap: 3px;
-    user-select: none; 
+    user-select: none;
 }
 
 .branding-text {
-    font-weight: bold; 
+    font-weight: bold;
     letter-spacing: -0.5px;
 }
 
 .branding-subtext {
-    font-weight: 400; 
+    font-weight: 400;
+}
+
+h1 {
+    color: #4285f4;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #673ab7;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+    background-color: #61179a;
+    color: white;
+}
+
+.btn-back,
+.btn-clear {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-back {
+    background-color: #4285f4;
+    color: white;
+}
+
+.btn-clear {
+    background: #db4437;
+    color: white;
+    margin-left: 10px;
 }
