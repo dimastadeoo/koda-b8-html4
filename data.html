@@ -5,68 +5,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Data Survey </title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <h1>Tabel Survey Perokok</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Umur</th>
-                <th>Jenis Kelamin</th>
-                <th>Perokok</th>
-                <th>Merk Rokok</th>
-            </tr>
-        </thead>
-        <tbody class="tbody">
 
-        </tbody>
-    </table>
-    <a href="index.html" class="btn-back">Kembali ke Form</a>
-    <button id="clear-btn" class="btn-clear">Hapus Semua Data</button>
+    <body class="p-6 font-sans bg-pink-200">
 
-    <script>
-        const tableBody = document.querySelector('.tbody')
-        const clearBtn = document.getElementById('clear-btn')
+        <div class="mx-auto bg-white p-6 rounded-xl border border-gray-200">
+            <h1 class="text-2xl font-bold text-blue-600 mb-5">Tabel Survey Perokok</h1>
 
-        function displayData() {
+            <div class="overflow-x-auto w-full mb-5">
+                <table class="w-full border-collapse border border-gray-200 text-sm">
+                    <thead>
+                        <tr class="bg-purple-700 text-white">
+                            <th class="border border-gray-300 p-3">No</th>
+                            <th class="border border-gray-300 p-3">Nama</th>
+                            <th class="border border-gray-300 p-3">Umur</th>
+                            <th class="border border-gray-300 p-3">Jenis Kelamin</th>
+                            <th class="border border-gray-300 p-3">Perokok</th>
+                            <th class="border border-gray-300 p-3">Merk Rokok</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                    </tbody>
+                </table>
+            </div>
 
-            const savedData = JSON.parse(window.localStorage.getItem('surveyResponses')) || []
+            <div class="flex items-center gap-3">
+                <a href="index.html"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded font-bold text-sm no-underline">
+                    Kembali ke Form
+                </a>
+                <button id="clear-btn"
+                    class="bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded font-bold text-sm border-none cursor-pointer">
+                    Hapus Semua Data
+                </button>
+            </div>
+        </div>
 
-            savedData.forEach((data, index) => {
-                const row = document.createElement('tr')
+        <script>
+            const tableBody = document.querySelector('.tbody')
+            const clearBtn = document.getElementById('clear-btn')
 
-                const columnsData = [
-                    index + 1,
-                    data.name,
-                    data.age,
-                    data.gender || '-',
-                    data.smoke || '-',
-                    data.merkSmoke || '-'
-                ];
+            function displayData() {
 
-                columnsData.forEach(text => {
-                    const cell = document.createElement('td');
-                    cell.innerText = text;
-                    row.append(cell);
+                const savedData = JSON.parse(window.localStorage.getItem('surveyResponses')) || []
+
+                savedData.forEach((data, index) => {
+                    const row = document.createElement('tr')
+
+                    if (index % 2 === 0) {
+                        row.className = "bg-purple-900 text-white";
+                    } else {
+                        row.className = "bg-gray-50 text-gray-900";
+                    }
+
+                    const columnsData = [
+                        index + 1,
+                        data.name,
+                        data.age,
+                        data.gender || '-',
+                        data.smoke || '-',
+                        data.merkSmoke || '-'
+                    ];
+
+                    columnsData.forEach(text => {
+                        const cell = document.createElement('td');
+                        cell.className = "border border-gray-300 p-3";
+                        cell.innerText = text;
+                        row.append(cell);
+                    });
+
+                    tableBody.append(row);
                 });
-
-                tableBody.append(row);
-            });
-        }
-
-        clearBtn.addEventListener('click', function () {
-            if (confirm('Apakah Anda yakin ingin menghapus semua data survey?')) {
-                window.localStorage.removeItem('surveyResponses')
-                window.location.href = 'data.html'
             }
-        });
 
-        displayData()
-    </script>
-</body>
+            clearBtn.addEventListener('click', function () {
+                if (confirm('Apakah Anda yakin ingin menghapus semua data survey?')) {
+                    window.localStorage.removeItem('surveyResponses')
+                    window.location.href = 'data.html'
+                }
+            });
+
+            displayData()
+        </script>
+    </body>
 
 </html>

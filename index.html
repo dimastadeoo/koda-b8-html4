@@ -6,118 +6,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="This document to learn how to use forms.">
     <title>Learning Use Form Input</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <main class="container-main">
-        <form class="form-container" action="data.html">
-            <div class="form-card header-card">
-                <div class="top-bar"></div>
-                <div class="card-content">
-                    <h1>Form Survey Perokok</h1>
-                    <p class="description">Form ini untuk menentukan banyaknya perokok</p>
+<body class="font-sans bg-pink-200">
+    <main class="p-6 grid place-items-center">  
+        <form class="w-full justify-center grid gap-2 my-4" action="data.html">
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div class="h-2.5 bg-pink-500 w-full">        
+                </div>
+                <div class="p-6">
+                    <h1 class="text-3xl font-normal text-gray-900 mb-3">
+                        Form Survey Perokok
+                    </h1>
+                    <p class="text-sm text-gray-900">
+                        Form ini untuk menentukan banyaknya perokok
+                    </p>
                 </div>
             </div>
-            <div class="form-card">
-                <div class="card-content">
-                    <label class="question-label" for="name">Siapa nama anda?</label>
-                    <input id="name" name="name" class="text-input" type="text" placeholder="Your Answer" required />
+
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div class="p-6">
+                    <label class="block text-base text-gray-900 mb-6 font-medium" for="name">
+                        Siapa nama anda?
+                    </label>
+                    <input id="name" name="name"
+                        class="w-full max-w-[80%] border-b border-gray-500 py-2 text-sm text-gray-900 outline-none "
+                        type="text" placeholder="Your Answer" required />
                 </div>
             </div>
-            <div class="form-card">
-                <div class="card-content">
-                    <label class="question-label" for="age">Berapa umur anda?</label>
-                    <input class="text-input" id="age" name="age" type="number" placeholder="Your Answer" required>
+
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div class="p-6">
+                    <label class="block text-base text-gray-900 mb-6 font-medium" for="age">
+                        Berapa umur anda?
+                    </label>
+                    <input
+                        class="w-full max-w-[80%] border-b border-gray-500 py-2 text-sm text-gray-900 outline-none"
+                        id="age" name="age" type="number" placeholder="Your Answer" required>
                 </div>
             </div>
-            <div class="form-card">
-                <div class="card-content">
-                    <label class="question-label">Apa jenis kelamin anda?</label>
-                    <div class="options-container">
-                        <label for="female" class="option-item">
-                            <input type="radio" id="female" name="gender" value="Perempuan"/>
-                            <span class="radio-custom"></span>
-                            <label class="option-text" for="female">Perempuan</label>
+
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div class="p-6">
+                    <label class="block text-base text-gray-900 mb-6 font-medium">
+                        Apa jenis kelamin anda?
+                    </label>
+                    <div class="flex flex-col gap-4">
+                        <label for="female"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+
+                            <input type="radio" id="female" name="gender" value="Perempuan"
+                                class="w-5 h-5 accent-pink-500 cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">
+                                Perempuan
+                            </span>
+
                         </label>
-                        <label for="man" class="option-item">
-                            <input type="radio" id="man" name="gender" value="Laki-laki" />
-                            <span class="radio-custom"></span>
-                            <label class="option-text" for="man">Laki-laki</label>
+                        <label for="man"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+                            
+                            <input type="radio" id="man" name="gender" value="Laki-laki"
+                                class="w-5 h-5 accent-pink-500 cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">
+                                Laki-laki
+                            </span>
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="form-card">
-                <div class="card-content">
-                    <label class="question-label">Apakah anda Perokok?</label>
-                    <div class="options-container">
-                        <label for="yes" class="option-item">
-                            <input type="radio" id="yes" name="smoke" value="Ya"/>
-                            <span class="radio-custom"></span>
-                            <label class="option-text" for="yes">Ya</label>
+
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div class="p-6">
+                    <label class="block text-base text-gray-900 mb-6 font-medium">
+                        Apakah anda Perokok?
+                    </label>
+                    <div class="flex flex-col gap-4">
+                        <label for="yes"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+                            <input type="radio" id="yes" name="smoke" value="Ya"
+                                class="w-5 h-5 accent-pink-500 cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">Ya</span>
                         </label>
-                        <label for="no" class="option-item">
-                            <input type="radio" id="no" name="smoke" value="Tidak" />
-                            <span class="radio-custom"></span>
-                            <label class="option-text" for="no">Tidak</label>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-card">
-                <div class="card-content">
-                    <label class="question-label">Jika anda perokok, rokok apa yang anda pernah coba?</label>
-                    <div class="options-container">
-                        <label for="gudangGaram" class="option-item">
-                            <input type="checkbox" id="gudangGaram" name="merkSmoke" value="Gudang Garam Filter" />
-                            <span class="checkbox-custom"></span>
-                            <label class="option-text" for="gudangGaram">Gudang Garam Filter</label>
-                        </label>
-                        <label for="luckyStrike" class="option-item">
-                            <input type="checkbox" id="luckyStrike" name="merkSmoke" value="Lucky Strike" />
-                            <span class="checkbox-custom"></span>
-                            <label class="option-text" for="luckyStrike">Lucky Strike</label>
-                        </label>
-                        <label for="marlboro" class="option-item">
-                            <input type="checkbox" id="marlboro" name="merkSmoke" value="Marlboro" />
-                            <span class="checkbox-custom"></span>
-                            <label class="option-text" for="marlboro">Marlboro</label>
-                        </label>
-                        <label for="esse" class="option-item">
-                            <input type="checkbox" id="esse" name="merkSmoke" value="Esse" />
-                            <span class="checkbox-custom"></span>
-                            <label class="option-text" for="esse">Esse</label>
+                        <label for="no"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+                            <input type="radio" id="no" name="smoke" value="Tidak"
+                                class="w-5 h-5 accent-pink-500 cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">Tidak</span>
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="form-actions">
-                <div class="button-submit-container">
-                    <button type="submit" class="btn-submit">Submit</button>
-                    <a href="data.html" class="btn-submit">Lihat Data</a>
+
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div class="p-6">
+                    <label class="block text-base text-gray-900 mb-6 font-medium">
+                        Jika anda perokok, rokok apa yang anda
+                        pernah coba?
+                    </label>
+                    <div class="flex flex-col gap-4">
+                        <label for="gudangGaram"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+                            <input type="checkbox" id="gudangGaram" name="merkSmoke" value="Gudang Garam Filter"
+                                class="w-[18px] h-[18px] accent-pink-500 rounded cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">Gudang Garam Filter</span>
+                        </label>
+                        <label for="luckyStrike"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+                            <input type="checkbox" id="luckyStrike" name="merkSmoke" value="Lucky Strike"
+                                class="w-[18px] h-[18px] accent-pink-500 rounded cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">
+                                Lucky Strike
+                            </span>
+                        </label>
+                        <label for="marlboro"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+                            <input type="checkbox" id="marlboro" name="merkSmoke" value="Marlboro"
+                                class="w-[18px] h-[18px] accent-pink-500 rounded cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">
+                                Marlboro
+                            </span>
+                        </label>
+                        <label for="esse"
+                            class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
+                            <input type="checkbox" id="esse" name="merkSmoke" value="Esse"
+                                class="w-[18px] h-[18px] accent-pink-500 rounded cursor-pointer" />
+                            <span class="text-[15px] text-gray-900">
+                                Esse
+                            </span>
+                        </label>
+                    </div>
                 </div>
-                <button type="reset" class="btn-reset">Reset</button>
+            </div>
+
+            <div class="flex justify-start items-center gap-4 mx-1 my-2">
+                <div class="flex gap-3">
+                    <button type="submit"
+                        class="bg-pink-500 hover:bg-pink-600 text-white border-none rounded py-2.5 px-6 text-sm font-medium cursor-pointer">
+                        Submit
+                    </button>
+                    <a href="data.html"
+                        class="bg-pink-500 hover:bg-pink-600 text-white border-none rounded py-2.5 px-6 text-sm font-medium cursor-pointern o-underline">
+                        Lihat
+                        Data
+                    </a>
+                </div>
+                <button type="reset"
+                    class="bg-none border-none text-pink-500 py-2.5 px-4 text-sm ml-auto font-medium cursor-pointer rounded hover:bg-pink-100 transition-colors duration-200">Reset</button>
             </div>
         </form>
-        <footer class="form-footer">
-            <p class="footer-text">This content is neither created nor endorsed by Google.</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Report Abuse</a>
-                <span class="footer-divider">-</span>
-                <a href="#" class="footer-link">Terms of Service</a>
-                <span class="footer-divider">-</span>
-                <a href="#" class="footer-link">Privacy Policy</a>
+
+        <footer class="w-full max-w-[640px] mt-6 flex flex-col items-center gap-2 pb-6">
+            <p class="text-xs text-gray-500 text-center class=leading-relaxed">
+                This content is neither created nor
+                endorsed by Google.
+            </p>
+            <div class="flex items-center gap-1.5 text-xs">
+                <a href="#" class="text-gray-500 underline cursor-pointer hover:text-gray-900">
+                    Report Abuse
+                </a>
+                <span class="text-gray-500">-</span>
+                <a href="#" class="text-gray-500 underline cursor-pointer hover:text-gray-900">
+                    Terms of Service
+                </a>
+                <span class="text-gray-500">-</span>
+                <a href="#" class="text-gray-500 underline cursor-pointer hover:text-gray-900">
+                    Privacy Policy
+                </a>
             </div>
-            <div class="google-branding">
-                <span class="branding-text">Google</span>
-                <span class="branding-subtext">Forms</span>
+            <div class="mt-4 font-sans text-[18px] text-gray-500 flex items-center gap-0.5 select-none">
+                <span class="font-bold tracking-tight">Google</span>
+                <span class="font-normal">Forms</span>
             </div>
         </footer>
     </main>
 
     <script>
-        const form = document.querySelector('.form-container')
+        const form = document.querySelector('form')
         form.addEventListener('submit', function (e) {
             e.preventDefault()
 
@@ -135,17 +200,17 @@
                 checkedBrands.push(checkbox.value)
             })
 
-            if (gender === "" || smoke === "" ) {
+            if (gender === "" || smoke === "") {
                 alert('Mohon isi jenis Kelamin, dan status apakah perokok atau tidak')
                 return
             }
 
-            if (smoke === "Ya" && checkedBrands.length === 0){
+            if (smoke === "Ya" && checkedBrands.length === 0) {
                 alert('Mohon isi merk rokok, jika anda perokok')
                 return
             }
 
-            if (smoke === "Tidak" && checkedBrands.length !== 0){
+            if (smoke === "Tidak" && checkedBrands.length !== 0) {
                 alert('Jika anda bukan perokok, tidak perlu isi merk rokok')
                 return
             }
