@@ -7,13 +7,14 @@
     <meta name="description" content="This document to learn how to use forms.">
     <title>Learning Use Form Input</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 </head>
 
 <body class="font-sans bg-pink-200">
-    <main class="p-6 grid place-items-center">  
+    <main class="p-6 grid place-items-center">
         <form class="w-full justify-center grid gap-2 my-4" action="data.html">
             <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div class="h-2.5 bg-pink-500 w-full">        
+                <div class="h-2.5 bg-pink-500 w-full">
                 </div>
                 <div class="p-6">
                     <h1 class="text-3xl font-normal text-gray-900 mb-3">
@@ -41,8 +42,7 @@
                     <label class="block text-base text-gray-900 mb-6 font-medium" for="age">
                         Berapa umur anda?
                     </label>
-                    <input
-                        class="w-full max-w-[80%] border-b border-gray-500 py-2 text-sm text-gray-900 outline-none"
+                    <input class="w-full max-w-[80%] border-b border-gray-500 py-2 text-sm text-gray-900 outline-none"
                         id="age" name="age" type="number" placeholder="Your Answer" required>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                         </label>
                         <label for="man"
                             class="w-full h-full flex items-center cursor-pointer text-sm text-gray-900 gap-2.5">
-                            
+
                             <input type="radio" id="man" name="gender" value="Laki-laki"
                                 class="w-5 h-5 accent-pink-500 cursor-pointer" />
                             <span class="text-[15px] text-gray-900">
@@ -182,56 +182,56 @@
     </main>
 
     <script>
-        const form = document.querySelector('form')
-        form.addEventListener('submit', function (e) {
-            e.preventDefault()
+        $(function () {
+            const form = $('form');
 
-            const name = document.getElementById('name').value
-            const age = document.getElementById('age').value
+            form.on('submit', function (e) {
+                e.preventDefault();
 
-            const genderRadio = document.querySelector('input[name="gender"]:checked')
-            const gender = genderRadio ? genderRadio.value : ''
+                const name = $('#name').val();
+                const age = $('#age').val();
 
-            const smokeRadio = document.querySelector('input[name="smoke"]:checked');
-            const smoke = smokeRadio ? smokeRadio.value : ''
+                const gender = $('input[name="gender"]:checked').val() || '';
+                const smoke = $('input[name="smoke"]:checked').val() || '';
 
-            const checkedBrands = []
-            document.querySelectorAll('input[name="merkSmoke"]:checked').forEach(function (checkbox) {
-                checkedBrands.push(checkbox.value)
-            })
+                const checkedBrands = [];
+                $('input[name="merkSmoke"]:checked').each(function () {
+                    checkedBrands.push($(this).val());
+                });
 
-            if (gender === "" || smoke === "") {
-                alert('Mohon isi jenis Kelamin, dan status apakah perokok atau tidak')
-                return
-            }
+                if (gender === "" || smoke === "") {
+                    alert('Mohon isi jenis Kelamin, dan status apakah perokok atau tidak');
+                    return;
+                }
 
-            if (smoke === "Ya" && checkedBrands.length === 0) {
-                alert('Mohon isi merk rokok, jika anda perokok')
-                return
-            }
+                if (smoke === "Ya" && checkedBrands.length === 0) {
+                    alert('Mohon isi merk rokok, jika anda perokok');
+                    return;
+                }
 
-            if (smoke === "Tidak" && checkedBrands.length !== 0) {
-                alert('Jika anda bukan perokok, tidak perlu isi merk rokok')
-                return
-            }
+                if (smoke === "Tidak" && checkedBrands.length !== 0) {
+                    alert('Jika anda bukan perokok, tidak perlu isi merk rokok');
+                    return;
+                }
 
-            const responseData = {
-                name: name,
-                age: age,
-                gender: gender,
-                smoke: smoke,
-                merkSmoke: checkedBrands.join(', ')
-            }
+                const responseData = {
+                    name: name,
+                    age: age,
+                    gender: gender,
+                    smoke: smoke,
+                    merkSmoke: checkedBrands.join(', ')
+                };
 
-            let existingData = JSON.parse(window.localStorage.getItem('surveyResponses')) || []
+                let existingData = JSON.parse(window.localStorage.getItem('surveyResponses')) || [];
+                existingData.push(responseData);
 
-            existingData.push(responseData)
+                window.localStorage.setItem('surveyResponses', JSON.stringify(existingData));
 
-            window.localStorage.setItem('surveyResponses', JSON.stringify(existingData))
-
-            window.location.href = 'data.html'
-        })
+                window.location.href = 'data.html';
+            });
+        });
     </script>
 </body>
+
 
 </html>

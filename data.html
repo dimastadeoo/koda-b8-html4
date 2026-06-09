@@ -7,6 +7,7 @@
     <title>Table Data Survey </title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 </head>
 
 <body>
@@ -46,50 +47,51 @@
         </div>
 
         <script>
-            const tableBody = document.querySelector('.tbody')
-            const clearBtn = document.getElementById('clear-btn')
+            $(function () {
+                const tableBody = $('.tbody')
+                const clearBtn = $('#clear-btn')
 
-            function displayData() {
+                function displayData() {
+                    const savedData = JSON.parse(window.localStorage.getItem('surveyResponses')) || [];
 
-                const savedData = JSON.parse(window.localStorage.getItem('surveyResponses')) || []
+                    savedData.forEach((data, index) => {
+                        const row = $('<tr></tr>')
 
-                savedData.forEach((data, index) => {
-                    const row = document.createElement('tr')
+                        if (index % 2 === 0) {
+                            row.addClass("bg-purple-900 text-white");
+                        } else {
+                            row.addClass("bg-gray-50 text-gray-900");
+                        }
 
-                    if (index % 2 === 0) {
-                        row.className = "bg-purple-900 text-white";
-                    } else {
-                        row.className = "bg-gray-50 text-gray-900";
-                    }
+                        const columnsData = [
+                            index + 1,
+                            data.name,
+                            data.age,
+                            data.gender || '-',
+                            data.smoke || '-',
+                            data.merkSmoke || '-'
+                        ];
 
-                    const columnsData = [
-                        index + 1,
-                        data.name,
-                        data.age,
-                        data.gender || '-',
-                        data.smoke || '-',
-                        data.merkSmoke || '-'
-                    ];
+                        columnsData.forEach(text => {
+                            const cell = $('<td></td>')
+                            cell.addClass('border border-gray-300 p-3')
+                            cell.text(text)
+                            row.append(cell)
+                        })
 
-                    columnsData.forEach(text => {
-                        const cell = document.createElement('td');
-                        cell.className = "border border-gray-300 p-3";
-                        cell.innerText = text;
-                        row.append(cell);
-                    });
+                        tableBody.append(row);
 
-                    tableBody.append(row);
-                });
-            }
-
-            clearBtn.addEventListener('click', function () {
-                if (confirm('Apakah Anda yakin ingin menghapus semua data survey?')) {
-                    window.localStorage.removeItem('surveyResponses')
-                    window.location.href = 'data.html'
+                    })
                 }
-            });
 
-            displayData()
+                clearBtn.on('click', function () {
+                    if (confirm('Apakah Anda yakin ingin menghapus semua data survey?')) {
+                        window.localStorage.removeItem('surveyResponses')
+                        window.location.href = 'data.html'
+                    }
+                })
+                displayData()
+            })
         </script>
     </body>
 
