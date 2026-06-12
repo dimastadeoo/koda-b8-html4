@@ -25,4 +25,5 @@
 
 ![alt text](<Recording 2026-06-09 at 17.26.44.gif>)
 
-Berikut merupakan program untuk isi form dan menampilkan data reponnya di tabel. menggunakan local storage. dan program ini sudah menggunakan tailwind CSS
+Berikut merupakan program untuk isi form dan menampilkan data responnya di tabel. menggunakan local storage. dan program ini sudah menggunakan tailwind CSS
+untuk jalannya program, user diharuskan input semua data yang ada, ketika user memilih perokok dengan pilihan Ya maka harus memilih merk rokok, sebaliknya jika tidak, maka tidak perlu diisi merk rokoknya, jika tidak sesuai kondisi maka akan memunculkan alert pada browser. program ini memanfaatkan fitur Object FormData untuk pengambilan value input Form
