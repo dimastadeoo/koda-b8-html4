@@ -156,6 +156,19 @@
             </div>
         </form>
 
+        <!-- Modal Error -->
+        <div id="errorModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+            <div class="w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
+                <p id="modalMessage" class="mb-5 text-sm text-gray-700"></p>
+                <div class="flex justify-end">
+                    <button type="button" id="closeModal"
+                        class="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <footer class="w-full max-w-[640px] mt-6 flex flex-col items-center gap-2 pb-6">
             <p class="text-xs text-gray-500 text-center class=leading-relaxed">
                 This content is neither created nor
@@ -185,6 +198,34 @@
         $(function () {
             const form = $('#form');
 
+            // validasi ketika user pilih ya maka harus memilih merk rokok, ketika tidak pada pemilihan merk rokok akan di matikan
+            $('input[name="smoke"]').on('change', function () {
+                const isSmoker = $('input[name="smoke"]:checked').val() === "Ya";
+
+                $('input[name="merkSmoke"]').prop('disabled', !isSmoker);
+
+                if (!isSmoker) {
+                    $('input[name="merkSmoke"]').prop('checked', false);
+                }
+            });
+
+            function showModal(message) {
+                $('#modalMessage').text(message);
+                $('#errorModal').removeClass('hidden').addClass('flex');
+            }
+
+            function closeModal() {
+                $('#errorModal').removeClass('flex').addClass('hidden');
+            }
+
+            $('#closeModal').on('click', closeModal);
+
+            $('#errorModal').on('click', function (e) {
+                if (e.target.id === 'errorModal') {
+                    closeModal();
+                }
+            });
+
             form.on('submit', function (e) {
                 e.preventDefault();
 
@@ -194,23 +235,31 @@
                 $('input[name="merkSmoke"]:checked').each(function () {
                     valueForm.merkSmoke.push($(this).val());
                 });
+
                 
-                
+
+
                 // validasi form
-                if (valueForm.gender === "" || valueForm.smoke === "") {
-                    alert('Mohon isi jenis Kelamin, dan status apakah perokok atau tidak');
+                if (valueForm.name === "") {
+                    showModal('Nama wajib diisi');
+                    return;
+                }
+
+                if (valueForm.age === "" || Number(valueForm.age) <= 0) {
+                    showModal('Umur wajib diisi dengan angka yang valid');
+                    return;
+                }
+
+                if (!valueForm.gender || !valueForm.smoke) {
+                    showModal('Mohon isi jenis kelamin dan status perokok');
                     return;
                 }
 
                 if (valueForm.smoke === "Ya" && valueForm.merkSmoke.length === 0) {
-                    alert('Mohon isi merk rokok, jika anda perokok');
+                    showModal('Mohon pilih merk rokok jika Anda perokok');
                     return;
                 }
 
-                if (valueForm.smoke === "Tidak" && valueForm.merkSmoke.length !== 0) {
-                    alert('Jika anda bukan perokok, tidak perlu isi merk rokok');
-                    return;
-                }
                 // tampung input ke dalam variabel
                 const responseData = {
                     name: valueForm.name,
@@ -220,13 +269,25 @@
                     merkSmoke: valueForm.merkSmoke.join(', ')
                 };
                 // ambil data di local storage, kalo tidak ada beri array kosong
-                const existingData = JSON.parse(window.localStorage.getItem('surveyResponses')) || [];
-                //tambahkan data input ke variabel yang digunakan untuk ambil data local storage
-                existingData.push(responseData);
-                // simpan ke local storage dalam bentuk string
-                window.localStorage.setItem('surveyResponses', JSON.stringify(existingData));
-                
-                window.location.href = 'data.html';
+                let existingData = [];
+
+                try {
+                    existingData = JSON.parse(window.localStorage.getItem('surveyResponses')) || [];
+
+                    if (!Array.isArray(existingData)) {
+                        existingData = [];
+                    }
+                } catch (error) {
+                    existingData = [];
+                }
+                //proses simpan ke local storage
+                try {
+                    existingData.push(responseData);
+                    window.localStorage.setItem('surveyResponses', JSON.stringify(existingData));
+                    window.location.href = 'data.html';
+                } catch (error) {
+                    showModal('Data gagal disimpan. Silakan coba lagi.');
+                }
             });
         });
     </script>
