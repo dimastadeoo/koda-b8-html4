@@ -5,7 +5,7 @@
 <table>
     <tr>
         <td>
-            <img src="Cuplikan layar 2026-06-02 173742.png" width="400p" height ='200px'>
+            <img src="Cuplikan layar 2026-06-02 173742.png" width="400p" height ='400px'>
         </td>
         <td>
             <img src="127.0.0.1_3000_data.html.png" width="400p">
